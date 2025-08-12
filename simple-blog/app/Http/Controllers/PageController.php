@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function about(){
-        return 'This is my blog';
+        return view('about');
     }
 }
