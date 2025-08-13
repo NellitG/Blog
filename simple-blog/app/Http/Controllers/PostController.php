@@ -15,4 +15,17 @@ class PostController extends Controller
         //pass the posts to the view
         return view('home', ['posts' => $posts]);
     }
+
+    public function show($id)
+    {
+        // Fetch a single post by its ID
+        $post = \App\Models\Post::find($id);
+
+        // Check if the post exists
+        if (!$post) {
+            abort(404, 'Post not found');
+        }
+
+        return view('posts.show', compact('post'));
+    }
 }

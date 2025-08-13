@@ -5,6 +5,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+
 Route::get('/home', [PostController::class, 'index']);
 Route::get('/about', [PageController::class, 'about']);
 Route::get('/contact', [ContactController::class, 'contact']);

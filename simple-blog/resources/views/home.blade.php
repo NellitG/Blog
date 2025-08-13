@@ -3,9 +3,16 @@
 @section('title', 'Home')
 
 @section('content')
-    <h2>Latest Blog Posts</h2>
+    <h1>Latest Blog Posts</h1>
+    
 
     @foreach($posts as $post)
+        <h2>
+        <a href="{{ route('posts.show', $post->id) }}">
+            {{ $post->title }}
+        </a>
+    </h2>
+
         <article>
             <h3>{{ $post->title }}</h3>
             <p>{{ $post->content }}</p>
