@@ -7,4 +7,6 @@
     <p>This is a simple blog where I share my thoughts and experiences.</p>
     <p>Feel free to explore the different sections of the blog.</p>
     <a href="/latest-posts">Latest Posts</a>
+
+    <h2>Latest Blog Posts</h2>
 @endsection
