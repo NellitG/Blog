@@ -20,4 +20,24 @@ class PostController extends Controller
     {
         return view('posts.show', compact('post'));
     }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        // Validate the request data
+        $validated = $request->validate([
+            'title' => 'required|min:3|max:255',
+            'content' => 'required|min:10',
+        ]);
+
+        // Create a new post
+        Post::create($validated);
+
+        // Redirect to the posts index page
+        return redirect()->route('posts.index')->with('success', 'Post created successfully!');
+    }
 }
