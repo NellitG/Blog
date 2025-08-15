@@ -3,20 +3,21 @@
 @section('title', 'Home')
 
 @section('content')
-    <h1>Latest Blog Posts</h1>
-    
+  <h1 class="page-title">Latest Blog Posts</h1>
 
+  <div class="posts-container">
     @foreach($posts as $post)
-        <h2>
-        <a href="{{ route('posts.show', $post->id) }}">
+      <article class="post-card">
+        <h2 class="post-title">
+          <a href="{{ route('posts.show', $post->id) }}">
             {{ $post->title }}
-        </a>
-    </h2>
-
-        <article>
-            <h3>{{ $post->title }}</h3>
-            <p>{{ $post->content }}</p>
-            
-        </article>
+          </a>
+        </h2>
+        <p class="post-excerpt">
+          {{ Str::limit($post->content, 150, '...') }}
+        </p>
+        <a href="{{ route('posts.show', $post->id) }}" class="read-more">Read More →</a>
+      </article>
     @endforeach
+  </div>
 @endsection
