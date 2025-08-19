@@ -40,4 +40,26 @@ class PostController extends Controller
         // Redirect to the posts index page
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
+
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id); //laravel handles the 404 page without letting my app break
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validate the request data
+        $validated = $request->validate([
+            'title' => 'required|min:3|max:255',
+            'content' => 'required|min:10',
+        ]);
+
+        // Find the post and update it
+        $post = Post::findOrFail($id);
+        $post->update($validated);
+
+        // Redirect to the posts index page
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
+    }
 }
